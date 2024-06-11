@@ -74,7 +74,7 @@ section .title::after{
     bottom: -8px;
     left: 50%;
     font-size: 20px;
-    color: crimson;
+    color: #111;
     padding: 0 5px;
     background: #fff;
     transform: translateX(-50%);
@@ -91,7 +91,7 @@ section .title::after{
 }
 .navbar.sticky{
     padding: 15px 0;
-    background: crimson;
+    background: #111;
 }
 .navbar .max-width{
     display: flex;
@@ -124,7 +124,7 @@ section .title::after{
     transition: color 0.3s ease;
 }
 .navbar .menu li a:hover{
-    color: crimson;
+    color: #111;
     cursor: pointer;
 }
 .navbar.sticky .menu li a:hover{
@@ -143,7 +143,7 @@ section .title::after{
     position: fixed;
     height: 45px;
     width: 42px;
-    background: crimson;
+    background: #111;
     right: 30px;
     bottom: 10px;
     text-align: center;
@@ -171,7 +171,7 @@ section .title::after{
 /* home section styling */
 .home{
     display: flex;
-    background: url("https://images.pexels.com/photos/4360449/pexels-photo-4360449.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2") no-repeat center;
+    background: url("../images/b1.png") no-repeat center;
     height: 100vh;
     color: #fff;
     min-height: 500px;
@@ -258,6 +258,8 @@ section .title::after{
 
 /* about section styling */
 .about .title::after{
+    color: crimson;
+    background-color: #111;
     content: "who i am";
 }
 .about .about-content .left{
@@ -315,6 +317,7 @@ section .title::after{
 }
 .services .title::after,
 .teams .title::after{
+    color: crimson;
     background: #111;
     content: "what i provide";
 }
@@ -649,6 +652,9 @@ section .title::after{
 /* skills section styling */
 
 .skills .title::after{
+    
+    color: crimson;
+    background-color: #111;
     content: "what i know";
 }
 .skills .skills-content .column{
@@ -819,6 +825,8 @@ input,textarea
     caret-color: red;
 }
 .contact .title::after{
+    color: crimson;
+    background-color: #111;
     content: "get in touch";
 }
 .contact .contact-content .column{
@@ -917,7 +925,7 @@ footer
 {
     position: relative;
     width: 100%;
-    background: #3586ff;
+    background:  #111;
     min-height: 100px;
     padding: 20px 50px;
     display: flex;
@@ -1216,3 +1224,16 @@ footer .wave#wave4
         line-height: 38px;
     }
 }
+
+.project-container {
+    display: flex;
+    justify-content: space-between; /* Adjust as needed */
+    flex-wrap: wrap; /* Allows cards to wrap to next line if needed */
+}
+
+.card {
+    flex: 0 0 calc(25% - 20px); /* Adjust width as needed */
+    margin-bottom: 20px; /* Adjust margin between cards */
+    /* Other card styles */
+}
+
