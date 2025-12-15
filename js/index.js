@@ -76,4 +76,37 @@ $(document).ready(function(){
             }
         }
     });
+
+    // contact form submit -> save to localStorage JSON "DB"
+    $('#contact-form').on('submit', function(e){
+        e.preventDefault();
+
+        const name = $('#contact-name').val().trim();
+        const email = $('#contact-email').val().trim();
+        const subject = $('#contact-subject').val().trim();
+        const message = $('#contact-message').val().trim();
+
+        if (!name || !email || !message) {
+            alert('Please fill in your name, email and message.');
+            return;
+        }
+
+        const stored = localStorage.getItem('messages');
+        const messages = stored ? JSON.parse(stored) : [];
+
+        const newMessage = {
+            id: Date.now(),
+            name,
+            email,
+            subject,
+            message,
+            createdAt: new Date().toISOString()
+        };
+
+        messages.push(newMessage);
+        localStorage.setItem('messages', JSON.stringify(messages));
+
+        alert('Your message has been saved successfully.');
+        $('#contact-form')[0].reset();
+    });
 });
