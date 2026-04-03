@@ -1,0 +1,9 @@
+# If GitHub runs Jekyll on this repo by mistake, exclude Next.js / MDX source so Liquid
+# does not try to parse JSX in .mdx files (that causes "Liquid syntax error").
+exclude:
+  - src
+  - node_modules
+  - public
+  - scripts
+  - out
+  - .github
