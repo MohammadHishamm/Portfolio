@@ -1,9 +1,9 @@
 # Builds a static site (next export) and publishes to GitHub Pages.
 # Repo → Settings → Pages: Source = GitHub Actions.
 #
-# For a project site (https://USER.github.io/REPO/): set repository variable
-# NEXT_PUBLIC_BASE_PATH to /REPO (leading slash, no trailing slash).
-# For a user/org site (https://USER.github.io/) leave that variable unset.
+# Project sites (USER.github.io/REPO/) need base path /REPO. This workflow sets it
+# automatically from the repo name unless you override with repository variable
+# NEXT_PUBLIC_BASE_PATH (e.g. empty string for a USER.github.io repo).
 
 name: Deploy to GitHub Pages
 
@@ -30,10 +30,29 @@ jobs:
         with:
           node-version: "20"
           cache: npm
+      - name: Set NEXT_PUBLIC_BASE_PATH for GitHub Pages
+        id: basepath
+        env:
+          OVERRIDE: ${{ vars.NEXT_PUBLIC_BASE_PATH }}
+        shell: bash
+        run: |
+          if [ -n "$OVERRIDE" ]; then
+            echo "value=$OVERRIDE" >> "$GITHUB_OUTPUT"
+          else
+            R="${{ github.event.repository.name }}"
+            O="${{ github.repository_owner }}"
+            if [ "$R" = "${O}.github.io" ]; then
+              echo "value=" >> "$GITHUB_OUTPUT"
+            else
+              echo "value=/$R" >> "$GITHUB_OUTPUT"
+            fi
+          fi
       - name: Install and build
         env:
-          NEXT_PUBLIC_BASE_PATH: ${{ vars.NEXT_PUBLIC_BASE_PATH }}
-        run: npm ci && npm run build
+          NEXT_PUBLIC_BASE_PATH: ${{ steps.basepath.outputs.value }}
+        run: |
+          echo "NEXT_PUBLIC_BASE_PATH=${NEXT_PUBLIC_BASE_PATH:-<empty>}"
+          npm ci && npm run build
       - uses: actions/upload-pages-artifact@v3
         with:
           path: out

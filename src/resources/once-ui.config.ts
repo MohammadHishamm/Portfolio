@@ -13,8 +13,8 @@ import {
 } from "@/types";
 import { home } from "./index";
 
-// IMPORTANT: Replace with your own domain address - it's used for SEO in meta tags and schema
-const baseURL: string = "https://demo.magic-portfolio.com";
+// Site URL (SEO, schema). Must match where the site is hosted (include /repo for project Pages).
+const baseURL: string = "https://mohammadhishamm.github.io/Portfolio";
 
 const routes: RoutesConfig = {
   "/": true,
