@@ -47,4 +47,7 @@ walk(outDir, (full) => {
   count++;
 });
 
+// GitHub branch deploys run Jekyll unless this file exists at the site root.
+fs.writeFileSync(path.join(outDir, ".nojekyll"), "");
+
 console.log(`flatten-rsc: wrote ${count} flat __PAGE__.txt alias(es) for static hosting`);
