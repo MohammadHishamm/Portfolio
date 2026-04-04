@@ -1,5 +1,4 @@
 import { getPosts } from "@/utils/utils";
-import { publicAsset } from "@/utils/publicAsset";
 import { Column } from "@once-ui-system/core";
 import { ProjectCard } from "@/components";
 
@@ -30,7 +29,7 @@ export function Projects({ range, exclude }: ProjectsProps) {
         <ProjectCard
           priority={index < 2}
           key={post.slug}
-          href={publicAsset(`/work/${post.slug}`)}
+          href={`/work/${post.slug}`}
           images={post.metadata.images}
           title={post.metadata.title}
           description={post.metadata.summary}

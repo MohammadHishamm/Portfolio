@@ -26,16 +26,14 @@ import {
   ListItem,
   Line,
 } from "@once-ui-system/core";
+
 import { publicAsset } from "@/utils/publicAsset";
 
-function resolveMediaSrc(src: string | undefined): string | undefined {
-  if (!src || typeof src !== "string") return src;
-  return src.startsWith("/") ? publicAsset(src) : src;
-}
-
 function Media(props: React.ComponentProps<typeof MediaCore>) {
-  const resolved = resolveMediaSrc(props.src as string | undefined);
-  return <MediaCore {...props} src={(resolved ?? props.src) as string} />;
+  const src = props.src;
+  const resolved =
+    typeof src === "string" && src.startsWith("/") ? publicAsset(src) : src;
+  return <MediaCore {...props} src={(resolved ?? src) as typeof src} />;
 }
 
 type CustomLinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
@@ -46,7 +44,7 @@ type CustomLinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
 function CustomLink({ href, children, ...props }: CustomLinkProps) {
   if (href.startsWith("/")) {
     return (
-      <SmartLink href={publicAsset(href)} {...props}>
+      <SmartLink href={href} {...props}>
         {children}
       </SmartLink>
     );
@@ -82,7 +80,7 @@ function createImage({ alt, src, ...props }: MediaProps & { src: string }) {
       border="neutral-alpha-medium"
       sizes="(max-width: 960px) 100vw, 960px"
       alt={alt}
-      src={resolveMediaSrc(src) as string}
+      src={src.startsWith("/") ? publicAsset(src) : src}
       {...props}
     />
   );

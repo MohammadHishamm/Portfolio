@@ -4,6 +4,7 @@
  */
 import http from "node:http";
 import fs from "node:fs";
+import net from "node:net";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { lookup } from "mime-types";
@@ -40,7 +41,50 @@ function loadNextPublicBasePathFromEnvFiles() {
 loadNextPublicBasePathFromEnvFiles();
 
 const basePrefix = (process.env.NEXT_PUBLIC_BASE_PATH || "").replace(/\/$/, "");
-const port = Number(process.env.PORT) || 3000;
+
+/** @returns {Promise<number>} */
+function findListenPort() {
+  const explicit = process.env.PORT;
+  const start = explicit ? Number(explicit) : 3000;
+  const maxTries = explicit ? 1 : 20;
+
+  return new Promise((resolve, reject) => {
+    let attempt = 0;
+
+    function tryPort(port) {
+      const s = net.createServer();
+      s.once("error", (err) => {
+        s.close();
+        if (err.code !== "EADDRINUSE") {
+          reject(err);
+          return;
+        }
+        attempt++;
+        if (attempt >= maxTries) {
+          reject(
+            new Error(
+              explicit
+                ? `Port ${start} is already in use. Stop the other process (e.g. next dev) or run: $env:PORT="3001"`
+                : `No free port found starting at ${start} (tried ${maxTries} ports).`,
+            ),
+          );
+          return;
+        }
+        if (!explicit && port === start) {
+          console.warn(
+            `Port ${port} is in use (often \`npm run dev\`). Trying the next port…`,
+          );
+        }
+        tryPort(port + 1);
+      });
+      s.listen(port, () => {
+        s.close(() => resolve(port));
+      });
+    }
+
+    tryPort(start);
+  });
+}
 
 function isInsideRoot(root, candidate) {
   const rel = path.relative(root, candidate);
@@ -97,9 +141,22 @@ const server = http.createServer((req, res) => {
   fs.createReadStream(filePath).pipe(res);
 });
 
-server.listen(port, () => {
-  console.log(`Static preview → http://localhost:${port}/`);
-  if (basePrefix) {
-    console.log(`(HTML uses ${basePrefix}/…; requests are mapped to files under out/)`);
-  }
-});
+findListenPort()
+  .then((port) => {
+    server.listen(port, () => {
+      console.log(`Static preview → http://localhost:${port}/`);
+      if (basePrefix) {
+        console.log(
+          `(HTML uses ${basePrefix}/…; requests are mapped to files under out/)`,
+        );
+      }
+    });
+    server.on("error", (err) => {
+      console.error(err);
+      process.exit(1);
+    });
+  })
+  .catch((err) => {
+    console.error(err.message || err);
+    process.exit(1);
+  });

@@ -23,8 +23,6 @@ export type Person = {
   avatar: string;
   /** Email address */
   email: string;
-  /** IANA time zone location */
-  location: IANATimeZone;
   /** Languages spoken */
   languages?: string[];
 };

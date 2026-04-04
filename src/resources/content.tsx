@@ -3,14 +3,14 @@ import { Line, Row, Text } from "@once-ui-system/core";
 import { publicAsset } from "@/utils/publicAsset";
 
 const person: Person = {
-  firstName: "Selene",
-  lastName: "Yu",
-  name: `Selene Yu`,
-  role: "Design Engineer",
-  avatar: publicAsset("/images/avatar.jpg"),
-  email: "example@gmail.com",
-  location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "Bahasa"], // optional: Leave the array empty if you don't want to display languages
+  firstName: "Mohammad",
+  lastName: "Hisham",
+  name: `Mohammad Hisham`,
+  role: "Software Engineer",
+  /** Prefixed for `next/image` + unoptimized + basePath (see `publicAsset` doc). */
+  avatar: publicAsset("/images/avatar.jpeg"),
+  email: "mohammadhesham65@gmail.com",
+  languages: ["English", "Arabic"], // optional: Leave the array empty if you don't want to display languages
 };
 
 const newsletter: Newsletter = {
@@ -26,26 +26,20 @@ const social: Social = [
   {
     name: "GitHub",
     icon: "github",
-    link: "https://github.com/once-ui-system",
+    link: "https://github.com/MohammadHishamm",
     essential: true,
   },
   {
     name: "LinkedIn",
     icon: "linkedin",
-    link: "https://www.linkedin.com/company/once-ui/",
+    link: "https://www.linkedin.com/in/mohammad-hisham-24963b2ab/",
     essential: true,
   },
   {
-    name: "Instagram",
-    icon: "instagram",
-    link: "https://www.instagram.com/once_ui/",
+    name: "WhatsApp",
+    icon: "whatsapp",
+    link: "wa.link/tfjovw",
     essential: false,
-  },
-  {
-    name: "Threads",
-    icon: "threads",
-    link: "https://www.threads.com/@once_ui",
-    essential: true,
   },
   {
     name: "Email",
@@ -57,11 +51,11 @@ const social: Social = [
 
 const home: Home = {
   path: "/",
-  image: publicAsset("/images/og/home.jpg"),
+  image: "/images/og/home.jpg",
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Building bridges between design and code</>,
+  headline: <>Building bridges between software and design</>,
   featured: {
     display: true,
     title: (
@@ -73,11 +67,11 @@ const home: Home = {
         </Text>
       </Row>
     ),
-    href: publicAsset("/work/building-once-ui-a-customizable-design-system"),
+    href: "/work/building-once-ui-a-customizable-design-system",
   },
   subline: (
     <>
-    I'm Selene, a design engineer at <Text as="span" size="xl" weight="strong">ONCE UI</Text>, where I craft intuitive <br /> user experiences. After hours, I build my own projects.
+    I'm Mohammad Hisham, a software engineer where I build intuitive <br /> user experiences. After minutes, I build your project.
 </>
   ),
 };
@@ -86,7 +80,7 @@ const about: About = {
   path: "/about",
   label: "About",
   title: `About – ${person.name}`,
-  description: `Meet ${person.name}, ${person.role} from ${person.location}`,
+  description: `Meet ${person.name}, ${person.role}`,
   tableOfContent: {
     display: true,
     subItems: false,
@@ -103,8 +97,8 @@ const about: About = {
     title: "Introduction",
     description: (
       <>
-        Selene is a Jakarta-based design engineer with a passion for transforming complex challenges
-        into simple, elegant design solutions. Her work spans digital interfaces, interactive
+        Mohammad Hisham is a software engineer with a passion for transforming complex challenges
+        into simple, elegant software solutions. My work spans digital interfaces, interactive
         experiences, and the convergence of design and technology.
       </>
     ),

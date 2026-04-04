@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import { Fade, Flex, Line, Row, ToggleButton } from "@once-ui-system/core";
 
 import { routes, display, person, about, blog, work, gallery } from "@/resources";
-import { publicAsset } from "@/utils/publicAsset";
 import { ThemeToggle } from "./ThemeToggle";
 import styles from "./Header.module.scss";
 
@@ -88,7 +87,7 @@ export const Header = () => {
           >
             <Row gap="4" vertical="center" textVariant="body-default-s" suppressHydrationWarning>
               {routes["/"] && (
-                <ToggleButton prefixIcon="home" href={publicAsset("/")} selected={pathname === "/"} />
+                <ToggleButton prefixIcon="home" href="/" selected={pathname === "/"} />
               )}
               <Line background="neutral-alpha-medium" vert maxHeight="24" />
               {routes["/about"] && (
@@ -96,7 +95,7 @@ export const Header = () => {
                   <Row s={{ hide: true }}>
                     <ToggleButton
                       prefixIcon="person"
-                      href={publicAsset("/about")}
+                      href="/about"
                       label={about.label}
                       selected={pathname === "/about"}
                     />
@@ -104,7 +103,7 @@ export const Header = () => {
                   <Row hide s={{ hide: false }}>
                     <ToggleButton
                       prefixIcon="person"
-                      href={publicAsset("/about")}
+                      href="/about"
                       selected={pathname === "/about"}
                     />
                   </Row>
@@ -115,7 +114,7 @@ export const Header = () => {
                   <Row s={{ hide: true }}>
                     <ToggleButton
                       prefixIcon="grid"
-                      href={publicAsset("/work")}
+                      href="/work"
                       label={work.label}
                       selected={pathname.startsWith("/work")}
                     />
@@ -123,7 +122,7 @@ export const Header = () => {
                   <Row hide s={{ hide: false }}>
                     <ToggleButton
                       prefixIcon="grid"
-                      href={publicAsset("/work")}
+                      href="/work"
                       selected={pathname.startsWith("/work")}
                     />
                   </Row>
@@ -134,7 +133,7 @@ export const Header = () => {
                   <Row s={{ hide: true }}>
                     <ToggleButton
                       prefixIcon="book"
-                      href={publicAsset("/blog")}
+                      href="/blog"
                       label={blog.label}
                       selected={pathname.startsWith("/blog")}
                     />
@@ -142,7 +141,7 @@ export const Header = () => {
                   <Row hide s={{ hide: false }}>
                     <ToggleButton
                       prefixIcon="book"
-                      href={publicAsset("/blog")}
+                      href="/blog"
                       selected={pathname.startsWith("/blog")}
                     />
                   </Row>
@@ -153,7 +152,7 @@ export const Header = () => {
                   <Row s={{ hide: true }}>
                     <ToggleButton
                       prefixIcon="gallery"
-                      href={publicAsset("/gallery")}
+                      href="/gallery"
                       label={gallery.label}
                       selected={pathname.startsWith("/gallery")}
                     />
@@ -161,7 +160,7 @@ export const Header = () => {
                   <Row hide s={{ hide: false }}>
                     <ToggleButton
                       prefixIcon="gallery"
-                      href={publicAsset("/gallery")}
+                      href="/gallery"
                       selected={pathname.startsWith("/gallery")}
                     />
                   </Row>

@@ -15,7 +15,7 @@ import {
   Line,
 } from "@once-ui-system/core";
 import { baseURL, about, blog, home, person } from "@/resources";
-import { publicAsset, schemaAssetUrl } from "@/utils/publicAsset";
+import { schemaAssetUrl } from "@/utils/publicAsset";
 import { formatDate } from "@/utils/formatDate";
 import { getPosts } from "@/utils/utils";
 import { Metadata } from "next";
@@ -92,7 +92,7 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
             }}
           />
           <Column maxWidth="s" gap="16" horizontal="center" align="center">
-            <SmartLink href={publicAsset("/blog")}>
+            <SmartLink href="/blog">
               <Text variant="label-strong-m">Blog</Text>
             </SmartLink>
             <Text variant="body-default-xs" onBackground="neutral-weak" marginBottom="12">

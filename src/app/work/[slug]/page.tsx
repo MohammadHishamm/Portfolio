@@ -16,7 +16,7 @@ import {
   Line,
 } from "@once-ui-system/core";
 import { baseURL, about, home, person, work } from "@/resources";
-import { publicAsset, schemaAssetUrl } from "@/utils/publicAsset";
+import { schemaAssetUrl } from "@/utils/publicAsset";
 import { formatDate } from "@/utils/formatDate";
 import { ScrollToHash, CustomMDX } from "@/components";
 import { Metadata } from "next";
@@ -92,7 +92,7 @@ export default async function Project({
         }}
       />
       <Column maxWidth="s" gap="16" horizontal="center" align="center">
-        <SmartLink href={publicAsset("/work")}>
+        <SmartLink href="/work">
           <Text variant="label-strong-m">Projects</Text>
         </SmartLink>
         <Text variant="body-default-xs" onBackground="neutral-weak" marginBottom="12">
