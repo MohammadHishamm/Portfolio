@@ -18,13 +18,20 @@ import { baseURL, effects, fonts, style, dataStyle, home } from "@/resources";
 import { schemaAssetUrl } from "@/utils/publicAsset";
 
 export async function generateMetadata() {
-  return Meta.generate({
+  const base = await Meta.generate({
     title: home.title,
     description: home.description,
     baseURL: baseURL,
     path: home.path,
     image: schemaAssetUrl(baseURL, "/images/og/home.jpg"),
   });
+  return {
+    ...base,
+    icons: {
+      icon: [{ url: "/images/avatar.jpeg", type: "image/jpeg" }],
+      apple: "/images/avatar.jpeg",
+    },
+  };
 }
 
 export default async function RootLayout({

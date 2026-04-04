@@ -97,7 +97,7 @@ const about: About = {
     title: "Introduction",
     description: (
       <>
-        Mohammad Hisham is a software engineer with a passion for transforming complex challenges
+        Software Engineer with a passion for transforming complex challenges
         into simple, elegant software solutions. My work spans digital interfaces, interactive
         experiences, and the convergence of design and technology.
       </>
@@ -154,13 +154,9 @@ const about: About = {
     title: "Studies",
     institutions: [
       {
-        name: "University of Jakarta",
+        name: "Faculty of Computer Science, Misr International University",
         description: <>Studied software engineering.</>,
-      },
-      {
-        name: "Build the Future",
-        description: <>Studied online marketing and personal branding.</>,
-      },
+      }
     ],
   },
   technical: {
