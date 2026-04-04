@@ -1,4 +1,4 @@
-import { About, Blog, Gallery, Home, Newsletter, Person, Social, Work } from "@/types";
+import { About, Gallery, Home, Newsletter, Person, Social, Work } from "@/types";
 import { Line, Row, Text } from "@once-ui-system/core";
 import { publicAsset } from "@/utils/publicAsset";
 
@@ -71,7 +71,7 @@ const home: Home = {
   },
   subline: (
     <>
-    I'm Mohammad Hisham, a software engineer where I build intuitive <br /> user experiences. After minutes, I build your project.
+    I'm Mohammad Hisham, a software engineer where I build intuitive <br /> user experiences. After minutes, I build your business project.
 </>
   ),
 };
@@ -223,22 +223,12 @@ const about: About = {
   },
 };
 
-const blog: Blog = {
-  path: "/blog",
-  label: "Blog",
-  title: "Writing about design and tech...",
-  description: `Read what ${person.name} has been up to recently`,
-  // Create new blog posts by adding a new .mdx file to app/blog/posts
-  // All posts will be listed on the /blog route
-};
-
 const work: Work = {
   path: "/work",
   label: "Work",
   title: `Projects – ${person.name}`,
   description: `Design and dev projects by ${person.name}`,
-  // Create new project pages by adding a new .mdx file to app/blog/posts
-  // All projects will be listed on the /home and /work routes
+  // Add project pages as .mdx files in src/app/work/projects
 };
 
 const gallery: Gallery = {
@@ -292,4 +282,4 @@ const gallery: Gallery = {
   ],
 };
 
-export { person, social, newsletter, home, about, blog, work, gallery };
+export { person, social, newsletter, home, about, work, gallery };
