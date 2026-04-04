@@ -1,4 +1,18 @@
 {
   "trailingSlash": true,
-  "directoryListing": false
+  "directoryListing": false,
+  "rewrites": [
+    {
+      "source": "/Portfolio",
+      "destination": "/"
+    },
+    {
+      "source": "/Portfolio/",
+      "destination": "/"
+    },
+    {
+      "source": "/Portfolio/:path*",
+      "destination": "/:path*"
+    }
+  ]
 }

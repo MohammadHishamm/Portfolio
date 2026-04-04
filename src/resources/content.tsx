@@ -1,12 +1,13 @@
 import { About, Blog, Gallery, Home, Newsletter, Person, Social, Work } from "@/types";
 import { Line, Row, Text } from "@once-ui-system/core";
+import { publicAsset } from "@/utils/publicAsset";
 
 const person: Person = {
   firstName: "Selene",
   lastName: "Yu",
   name: `Selene Yu`,
   role: "Design Engineer",
-  avatar: "/images/avatar.jpg",
+  avatar: publicAsset("/images/avatar.jpg"),
   email: "example@gmail.com",
   location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
   languages: ["English", "Bahasa"], // optional: Leave the array empty if you don't want to display languages
@@ -56,7 +57,7 @@ const social: Social = [
 
 const home: Home = {
   path: "/",
-  image: "/images/og/home.jpg",
+  image: publicAsset("/images/og/home.jpg"),
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
@@ -72,7 +73,7 @@ const home: Home = {
         </Text>
       </Row>
     ),
-    href: "/work/building-once-ui-a-customizable-design-system",
+    href: publicAsset("/work/building-once-ui-a-customizable-design-system"),
   },
   subline: (
     <>
@@ -129,7 +130,7 @@ const about: About = {
         images: [
           // optional: leave the array empty if you don't want to display images
           {
-            src: "/images/projects/project-01/cover-01.jpg",
+            src: publicAsset("/images/projects/project-01/cover-01.jpg"),
             alt: "Once UI Project",
             width: 16,
             height: 9,
@@ -186,13 +187,13 @@ const about: About = {
         // optional: leave the array empty if you don't want to display images
         images: [
           {
-            src: "/images/projects/project-01/cover-02.jpg",
+            src: publicAsset("/images/projects/project-01/cover-02.jpg"),
             alt: "Project image",
             width: 16,
             height: 9,
           },
           {
-            src: "/images/projects/project-01/cover-03.jpg",
+            src: publicAsset("/images/projects/project-01/cover-03.jpg"),
             alt: "Project image",
             width: 16,
             height: 9,
@@ -221,7 +222,7 @@ const about: About = {
         // optional: leave the array empty if you don't want to display images
         images: [
           {
-            src: "/images/projects/project-01/cover-04.jpg",
+            src: publicAsset("/images/projects/project-01/cover-04.jpg"),
             alt: "Project image",
             width: 16,
             height: 9,
@@ -259,42 +260,42 @@ const gallery: Gallery = {
   // These are placeholder images, replace with your own
   images: [
     {
-      src: "/images/gallery/horizontal-1.jpg",
+      src: publicAsset("/images/gallery/horizontal-1.jpg"),
       alt: "image",
       orientation: "horizontal",
     },
     {
-      src: "/images/gallery/vertical-4.jpg",
+      src: publicAsset("/images/gallery/vertical-4.jpg"),
       alt: "image",
       orientation: "vertical",
     },
     {
-      src: "/images/gallery/horizontal-3.jpg",
+      src: publicAsset("/images/gallery/horizontal-3.jpg"),
       alt: "image",
       orientation: "horizontal",
     },
     {
-      src: "/images/gallery/vertical-1.jpg",
+      src: publicAsset("/images/gallery/vertical-1.jpg"),
       alt: "image",
       orientation: "vertical",
     },
     {
-      src: "/images/gallery/vertical-2.jpg",
+      src: publicAsset("/images/gallery/vertical-2.jpg"),
       alt: "image",
       orientation: "vertical",
     },
     {
-      src: "/images/gallery/horizontal-2.jpg",
+      src: publicAsset("/images/gallery/horizontal-2.jpg"),
       alt: "image",
       orientation: "horizontal",
     },
     {
-      src: "/images/gallery/horizontal-4.jpg",
+      src: publicAsset("/images/gallery/horizontal-4.jpg"),
       alt: "image",
       orientation: "horizontal",
     },
     {
-      src: "/images/gallery/vertical-3.jpg",
+      src: publicAsset("/images/gallery/vertical-3.jpg"),
       alt: "image",
       orientation: "vertical",
     },

@@ -6,7 +6,7 @@
     "export": "npm run build",
     "build": "next build --webpack && node scripts/flatten-rsc.mjs",
     "biome-write": "npx @biomejs/biome format --write .",
-    "start": "serve out --config ../serve.json",
+    "start": "node scripts/preview-static.mjs",
     "lint": "next lint"
   },
   "dependencies": {
@@ -32,6 +32,7 @@
     "@types/react": "^19.2.4",
     "@types/react-dom": "^19.2.3",
     "eslint": "^9.25.0",
+    "mime-types": "^3.0.2",
     "serve": "^14.2.4",
     "typescript": "^5.8.3",
     "tzdata": "^1.0.44"

@@ -1,5 +1,6 @@
 import { Column, Heading, Meta, Schema } from "@once-ui-system/core";
 import { baseURL, about, home, person, work } from "@/resources";
+import { schemaAssetUrl } from "@/utils/publicAsset";
 import { Projects } from "@/components/work/Projects";
 
 export async function generateMetadata() {
@@ -7,7 +8,7 @@ export async function generateMetadata() {
     title: work.title,
     description: work.description,
     baseURL: baseURL,
-    image: home.image,
+    image: schemaAssetUrl(baseURL, "/images/og/home.jpg"),
     path: work.path,
   });
 }
@@ -24,8 +25,8 @@ export default function Work() {
         image={home.image}
         author={{
           name: person.name,
-          url: `${baseURL}${about.path}`,
-          image: `${baseURL}${person.avatar}`,
+          url: schemaAssetUrl(baseURL, about.path),
+          image: schemaAssetUrl(baseURL, person.avatar),
         }}
       />
       <Heading marginBottom="l" variant="heading-strong-xl" align="center">

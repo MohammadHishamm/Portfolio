@@ -2,13 +2,14 @@ import { Column, Heading, Meta, Schema } from "@once-ui-system/core";
 import { Mailchimp } from "@/components";
 import { Posts } from "@/components/blog/Posts";
 import { baseURL, blog, home, person, newsletter } from "@/resources";
+import { schemaAssetUrl } from "@/utils/publicAsset";
 
 export async function generateMetadata() {
   return Meta.generate({
     title: blog.title,
     description: blog.description,
     baseURL: baseURL,
-    image: home.image,
+    image: schemaAssetUrl(baseURL, "/images/og/home.jpg"),
     path: blog.path,
   });
 }
@@ -26,7 +27,7 @@ export default function Blog() {
         author={{
           name: person.name,
           url: `${baseURL}/blog`,
-          image: `${baseURL}${person.avatar}`,
+          image: schemaAssetUrl(baseURL, person.avatar),
         }}
       />
       <Heading marginBottom="l" variant="heading-strong-xl" marginLeft="24">

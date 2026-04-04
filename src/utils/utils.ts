@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import { publicAsset } from "@/utils/publicAsset";
 
 type Team = {
   name: string;
@@ -39,15 +40,22 @@ function readMDXFile(filePath: string) {
   const rawContent = fs.readFileSync(filePath, "utf-8");
   const { data, content } = matter(rawContent);
 
+  const rawImage = data.image || "";
+  const rawImages: string[] = data.images || [];
+  const rawTeam = data.team || [];
+
   const metadata: Metadata = {
     title: data.title || "",
     subtitle: data.subtitle || "",
     publishedAt: data.publishedAt,
     summary: data.summary || "",
-    image: data.image || "",
-    images: data.images || [],
-    tag: data.tag || [],
-    team: data.team || [],
+    image: rawImage ? publicAsset(rawImage) : "",
+    images: rawImages.map((img: string) => publicAsset(img)),
+    tag: data.tag,
+    team: rawTeam.map((member: Team) => ({
+      ...member,
+      avatar: publicAsset(member.avatar),
+    })),
     link: data.link || "",
   };
 

@@ -15,6 +15,7 @@ import {
 } from "@once-ui-system/core";
 import { Footer, Header, RouteGuard, Providers } from "@/components";
 import { baseURL, effects, fonts, style, dataStyle, home } from "@/resources";
+import { schemaAssetUrl } from "@/utils/publicAsset";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -22,7 +23,7 @@ export async function generateMetadata() {
     description: home.description,
     baseURL: baseURL,
     path: home.path,
-    image: home.image,
+    image: schemaAssetUrl(baseURL, "/images/og/home.jpg"),
   });
 }
 

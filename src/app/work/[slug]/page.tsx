@@ -16,6 +16,7 @@ import {
   Line,
 } from "@once-ui-system/core";
 import { baseURL, about, home, person, work } from "@/resources";
+import { publicAsset, schemaAssetUrl } from "@/utils/publicAsset";
 import { formatDate } from "@/utils/formatDate";
 import { ScrollToHash, CustomMDX } from "@/components";
 import { Metadata } from "next";
@@ -47,7 +48,7 @@ export async function generateMetadata({
     title: post.metadata.title,
     description: post.metadata.summary,
     baseURL: baseURL,
-    image: post.metadata.image || home.image,
+    image: schemaAssetUrl(baseURL, post.metadata.image || "/images/og/home.jpg"),
     path: `${work.path}/${post.slug}`,
   });
 }
@@ -86,12 +87,12 @@ export default async function Project({
         image={post.metadata.image || home.image}
         author={{
           name: person.name,
-          url: `${baseURL}${about.path}`,
-          image: `${baseURL}${person.avatar}`,
+          url: schemaAssetUrl(baseURL, about.path),
+          image: schemaAssetUrl(baseURL, person.avatar),
         }}
       />
       <Column maxWidth="s" gap="16" horizontal="center" align="center">
-        <SmartLink href="/work">
+        <SmartLink href={publicAsset("/work")}>
           <Text variant="label-strong-m">Projects</Text>
         </SmartLink>
         <Text variant="body-default-xs" onBackground="neutral-weak" marginBottom="12">

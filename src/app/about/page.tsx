@@ -13,6 +13,7 @@ import {
   Row,
 } from "@once-ui-system/core";
 import { baseURL, about, home, person, social } from "@/resources";
+import { schemaAssetUrl } from "@/utils/publicAsset";
 import TableOfContents from "@/components/about/TableOfContents";
 import styles from "@/components/about/about.module.scss";
 import React from "react";
@@ -22,7 +23,7 @@ export async function generateMetadata() {
     title: about.title,
     description: about.description,
     baseURL: baseURL,
-    image: home.image,
+    image: schemaAssetUrl(baseURL, "/images/og/home.jpg"),
     path: about.path,
   });
 }
@@ -61,8 +62,8 @@ export default function About() {
         image={home.image}
         author={{
           name: person.name,
-          url: `${baseURL}${about.path}`,
-          image: `${baseURL}${person.avatar}`,
+          url: schemaAssetUrl(baseURL, about.path),
+          image: schemaAssetUrl(baseURL, person.avatar),
         }}
       />
       {about.tableOfContent.display && (

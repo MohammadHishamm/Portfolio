@@ -1,13 +1,14 @@
 import { Flex, Meta, Schema } from "@once-ui-system/core";
 import GalleryView from "@/components/gallery/GalleryView";
 import { baseURL, gallery, home, person } from "@/resources";
+import { schemaAssetUrl } from "@/utils/publicAsset";
 
 export async function generateMetadata() {
   return Meta.generate({
     title: gallery.title,
     description: gallery.description,
     baseURL: baseURL,
-    image: home.image,
+    image: schemaAssetUrl(baseURL, "/images/og/home.jpg"),
     path: gallery.path,
   });
 }
@@ -24,8 +25,8 @@ export default function Gallery() {
         image={home.image}
         author={{
           name: person.name,
-          url: `${baseURL}${gallery.path}`,
-          image: `${baseURL}${person.avatar}`,
+          url: schemaAssetUrl(baseURL, gallery.path),
+          image: schemaAssetUrl(baseURL, person.avatar),
         }}
       />
       <GalleryView />

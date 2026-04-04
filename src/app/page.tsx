@@ -12,6 +12,7 @@ import {
   Line,
 } from "@once-ui-system/core";
 import { home, about, person, baseURL, routes } from "@/resources";
+import { schemaAssetUrl } from "@/utils/publicAsset";
 import { Mailchimp } from "@/components";
 import { Projects } from "@/components/work/Projects";
 import { Posts } from "@/components/blog/Posts";
@@ -22,7 +23,7 @@ export async function generateMetadata() {
     description: home.description,
     baseURL: baseURL,
     path: home.path,
-    image: home.image,
+    image: schemaAssetUrl(baseURL, "/images/og/home.jpg"),
   });
 }
 
@@ -38,8 +39,8 @@ export default function Home() {
         image={home.image}
         author={{
           name: person.name,
-          url: `${baseURL}${about.path}`,
-          image: `${baseURL}${person.avatar}`,
+          url: schemaAssetUrl(baseURL, about.path),
+          image: schemaAssetUrl(baseURL, person.avatar),
         }}
       />
       <Column fillWidth horizontal="center" gap="m">
