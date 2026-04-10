@@ -1,0 +1,40 @@
+---
+title: "Ariatoon – Full-stack Web Application"
+publishedAt: "2025-06-01"
+summary: "Full-stack freelance project: redesigned the admin dashboard, integrated PayPal and Stripe payments, and added Cloudinary-backed media uploads for a novel and animation platform."
+images: []
+team:
+  - name: "Mohammad Hisham"
+    role: "Full-stack Developer & UI/UX"
+    avatar: "/images/avatar.jpeg"
+    linkedIn: "https://www.linkedin.com/in/mohammad-hisham-24963b2ab/"
+---
+
+## Overview
+
+Ariatoon is an Arabic content platform focused on novels and animations. I was brought in as a freelance full-stack developer to modernise the admin dashboard, implement in-app purchase flows, and solve scalability issues around media uploads.
+
+## Key Features
+
+- **Admin Dashboard Redesign**: Rebuilt the dashboard UI using Shadcn components, giving admins a cleaner, more consistent interface for managing content and users.
+- **Payment Integration**: Integrated both **PayPal** and **Stripe** to support multiple payment methods for in-app purchases — subscriptions, one-time purchases, and unlockable content.
+- **Cloudinary Media Pipeline**: Replaced ad-hoc file uploads with a Cloudinary integration for handling large novel files and images, offloading storage and transformation from the application server.
+- **Containerised Deployment**: Packaged the full application (frontend + backend) with Docker for consistent local development and deployment.
+
+## Technologies Used
+
+- **React Vite** – fast, lightweight frontend
+- **Go** – performant backend API
+- **Cloudinary** – cloud media storage and transformation
+- **Stripe & PayPal** – payment processing
+- **Docker** – containerisation
+- **TypeScript** – frontend type safety
+- **Shadcn** – component library
+
+## Challenges and Learnings
+
+Integrating two payment processors simultaneously required abstracting the payment logic behind a clean interface so either provider could be swapped or extended without touching the checkout UI. Cloudinary's transformation API also unlocked on-the-fly image resizing and format conversion, which improved page load times noticeably.
+
+## Outcome
+
+The redesigned admin dashboard reduced content management time and the payment integrations enabled monetisation of premium content. The Cloudinary pipeline handles all media uploads reliably, removing a bottleneck that had previously caused server strain.

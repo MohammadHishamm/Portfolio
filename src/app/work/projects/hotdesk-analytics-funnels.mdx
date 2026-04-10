@@ -1,0 +1,41 @@
+---
+title: "Product Analytics Funnels – Hotdesk"
+publishedAt: "2026-03-01"
+summary: "Built a full analytics tracking system using PostHog and Firebase to monitor every user action across the Hotdesk web application."
+images:
+  - "/images/projects/project-01/analytics.jpg"
+  - "/images/projects/project-01/analytics2.jpg"
+  - "/images/projects/project-01/analytics2.5.jpg"
+  - "/images/projects/project-01/analytics3.jpg"
+team:
+  - name: "Mohammad Hisham"
+    role: "Front-end Engineer"
+    avatar: "/images/avatar.jpeg"
+    linkedIn: "https://www.linkedin.com/in/mohammad-hisham-24963b2ab/"
+---
+
+## Overview
+
+Developed a comprehensive analytics funnels system for the Hotdesk web application, giving the data team complete visibility into how users navigate the platform — which pages they visit, how they arrive there, and what actions they take.
+
+## Key Features
+
+- **Page Tracking**: Tracks every page visit along with its source — whether the user came from the navigation bar, an external URL, or an internal redirect.
+- **Action Tracking**: Captures every meaningful interaction: button clicks, search queries, and API requests made within each page.
+- **Design Patterns**: Applied design patterns (strategy, observer) to keep the tracking code decoupled and easy to extend as new pages or features are added.
+- **Data Storage**: Events are funnelled into both PostHog (for product analytics dashboards) and Firebase (for raw event storage accessible to data engineers).
+
+## Technologies Used
+
+- **TypeScript** – type-safe event models and tracking utilities
+- **PostHog** – product analytics, funnels, and session recording
+- **Firebase** – persistent event storage
+- **React** – integrated tracking hooks into component lifecycle
+
+## Challenges and Learnings
+
+The main challenge was ensuring zero performance impact while tracking high-frequency events like button hovers and scroll depth. The solution was to batch events and debounce non-critical captures. Using design patterns also meant new tracking requirements could be added without touching existing logic — a decision that paid off multiple times during the project.
+
+## Outcome
+
+The analytics funnels are live in production. The data engineering team now has structured, queryable event data flowing into Firebase, and the product team uses PostHog dashboards daily to identify drop-off points and improve conversion.

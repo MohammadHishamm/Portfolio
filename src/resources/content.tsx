@@ -1,5 +1,4 @@
-import { About, Gallery, Home, Newsletter, Person, Social, Work } from "@/types";
-import { Line, Row, Text } from "@once-ui-system/core";
+import { About, Home, Newsletter, Person, Social, Work } from "@/types";
 import { publicAsset } from "@/utils/publicAsset";
 
 const person: Person = {
@@ -38,8 +37,8 @@ const social: Social = [
   {
     name: "WhatsApp",
     icon: "whatsapp",
-    link: "wa.link/tfjovw",
-    essential: false,
+    link: "https://wa.link/tfjovw",
+    essential: true,
   },
   {
     name: "Email",
@@ -55,24 +54,18 @@ const home: Home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Building bridges between software and design</>,
+  headline: <>Building reliable, scalable software solutions</>,
   featured: {
-    display: true,
-    title: (
-      <Row gap="12" vertical="center">
-        <strong className="ml-4">Once UI</strong>{" "}
-        <Line background="brand-alpha-strong" vert height="20" />
-        <Text marginRight="4" onBackground="brand-medium">
-          Featured work
-        </Text>
-      </Row>
-    ),
-    href: "/work/building-once-ui-a-customizable-design-system",
+    display: false,
+    title: <></>,
+    href: "/work",
   },
   subline: (
     <>
-    I'm Mohammad Hisham, a software engineer where I build intuitive <br /> user experiences. After minutes, I build your business project.
-</>
+      I'm Mohammad Hisham, a full-stack software engineer. I turn complex
+      problems into clean, production-ready products — from front-end interfaces
+      to backend systems and cloud integrations.
+    </>
   ),
 };
 
@@ -89,7 +82,7 @@ const about: About = {
     display: true,
   },
   calendar: {
-    display: true,
+    display: false,
     link: "https://cal.com",
   },
   intro: {
@@ -97,52 +90,86 @@ const about: About = {
     title: "Introduction",
     description: (
       <>
-        Software Engineer with a passion for transforming complex challenges
-        into simple, elegant software solutions. My work spans digital interfaces, interactive
-        experiences, and the convergence of design and technology.
+        Full-stack Software Engineer with hands-on experience building production
+        features across front-end interfaces, payment integrations, and analytics
+        pipelines. I care deeply about clean architecture, developer experience, and
+        shipping things that actually work. Currently based in Cairo, Egypt — open
+        to hybrid and remote roles.
       </>
     ),
   },
   work: {
-    display: true, // set to false to hide this section
+    display: true,
     title: "Work Experience",
     experiences: [
       {
-        company: "FLY",
-        timeframe: "2022 - Present",
-        role: "Senior Design Engineer",
+        company: "Hotdesk",
+        timeframe: "2025 – Present",
+        role: "Front-end Engineer (Hybrid)",
         achievements: [
           <>
-            Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user
-            engagement and 30% faster load times.
+            Built a <strong>Product Analytics Funnels</strong> system using PostHog and Firebase
+            to track page visits, navigation sources, and user actions across the web app —
+            giving the data team full visibility into user behaviour.
           </>,
           <>
-            Spearheaded the integration of AI tools into design workflows, enabling designers to
-            iterate 50% faster.
+            Led research and implementation of a <strong>new project architecture</strong> (SCR
+            structure) using Next.js, TypeScript, and Shadcn/Tailwind CSS, replacing legacy MUI/Bootstrap.
+            Presented the proposal to the CTO and senior engineers; approved and shipped.
+          </>,
+          <>
+            Integrated <strong>Apple Pay and Google Play</strong> into the booking and subscription
+            flow — both wired through Stripe.js, using Firebase Remote Config for feature-flag gating
+            and the Apple/Google SDKs for their respective payment sheets.
+          </>,
+          <>
+            Implemented <strong>Invoice</strong> and <strong>Promo-code</strong> management features
+            end-to-end in the Hotdesk Host Portal (Angular), integrated via the internal Hotdesk SDK
+            and toggled with Unleash feature flags.
+          </>,
+          <>
+            Led <strong>SEO enhancements</strong> across the Hotdesk web application — improving
+            metadata, structured data, page titles, and crawlability to increase organic search
+            visibility.
           </>,
         ],
         images: [
-          // optional: leave the array empty if you don't want to display images
           {
-            src: publicAsset("/images/projects/project-01/cover-01.jpg"),
-            alt: "Once UI Project",
+            src: publicAsset("/images/projects/project-01/analytics.jpg"),
+            alt: "Product Analytics Funnels",
+            width: 16,
+            height: 9,
+          },
+          {
+            src: publicAsset("/images/projects/project-01/googlePay1.png"),
+            alt: "Google Pay Integration",
+            width: 16,
+            height: 9,
+          },
+          {
+            src: publicAsset("/images/projects/project-01/invoice1.jpg"),
+            alt: "Invoice Feature",
             width: 16,
             height: 9,
           },
         ],
       },
       {
-        company: "Creativ3",
-        timeframe: "2018 - 2022",
-        role: "Lead Designer",
+        company: "Ariatoon",
+        timeframe: "2025",
+        role: "Full-stack Developer & UI/UX (Freelance, Remote)",
         achievements: [
           <>
-            Developed a design system that unified the brand across multiple platforms, improving
-            design consistency by 40%.
+            Redesigned the admin dashboard using Shadcn components for a cleaner,
+            more maintainable UI.
           </>,
           <>
-            Led a cross-functional team to launch a new product line, contributing to a 15% increase
-            in overall company revenue.
+            Integrated <strong>PayPal and Stripe</strong> for in-app purchases and
+            implemented Cloudinary for scalable novel and image uploads.
+          </>,
+          <>
+            Built the frontend with <strong>React Vite</strong> and the backend
+            with <strong>Go</strong>, containerised with Docker.
           </>,
         ],
         images: [],
@@ -150,74 +177,58 @@ const about: About = {
     ],
   },
   studies: {
-    display: true, // set to false to hide this section
-    title: "Studies",
+    display: true,
+    title: "Education",
     institutions: [
       {
-        name: "Faculty of Computer Science, Misr International University",
-        description: <>Studied software engineering.</>,
-      }
+        name: "Misr International University (MIU), Cairo",
+        description: <>B.Sc. Computer Science — focus: Full-stack Software Engineering. Graduated July 2025.</>,
+      },
+      {
+        name: "Manarat Alfarouk School, Cairo",
+        description: <>IGCSE Certificate. Graduated August 2021.</>,
+      },
     ],
   },
   technical: {
-    display: true, // set to false to hide this section
-    title: "Technical skills",
+    display: true,
+    title: "Technical Skills",
     skills: [
       {
-        title: "Figma",
+        title: "Frontend",
         description: (
-          <>Able to prototype in Figma with Once UI with unnatural speed.</>
+          <>
+            Building responsive, accessible interfaces with React, Next.js, Angular,
+            TypeScript, Tailwind CSS, and Shadcn. Experienced with feature flags
+            (Unleash, Firebase Remote Config) and design-to-code workflows in Figma.
+          </>
         ),
         tags: [
-          {
-            name: "Figma",
-            icon: "figma",
-          },
+          { name: "TypeScript", icon: "typescript" },
+          { name: "React", icon: "react" },
+          { name: "Next.js", icon: "nextjs" },
+          { name: "Angular", icon: "angular" },
+          { name: "Tailwind CSS", icon: "tailwind" },
         ],
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: publicAsset("/images/projects/project-01/cover-02.jpg"),
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-          {
-            src: publicAsset("/images/projects/project-01/cover-03.jpg"),
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
+        images: [],
       },
       {
-        title: "Next.js",
+        title: "Backend & Databases",
         description: (
-          <>Building next gen apps with Next.js + Once UI + Supabase.</>
+          <>
+            Server-side development with Node.js, Go, .NET/C#, Java, and Spring Boot.
+            Comfortable with SQL and NoSQL databases, Firebase, Supabase, and Posthog
+            for event tracking.
+          </>
         ),
         tags: [
-          {
-            name: "JavaScript",
-            icon: "javascript",
-          },
-          {
-            name: "Next.js",
-            icon: "nextjs",
-          },
-          {
-            name: "Supabase",
-            icon: "supabase",
-          },
+          { name: "Go", icon: "go" },
+          { name: "Firebase", icon: "firebase" },
+          { name: "Supabase", icon: "supabase" },
+          { name: "Docker", icon: "docker" },
+          { name: "Stripe", icon: "stripe" },
         ],
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: publicAsset("/images/projects/project-01/cover-04.jpg"),
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
+        images: [],
       },
     ],
   },
@@ -231,55 +242,4 @@ const work: Work = {
   // Add project pages as .mdx files in src/app/work/projects
 };
 
-const gallery: Gallery = {
-  path: "/gallery",
-  label: "Gallery",
-  title: `Photo gallery – ${person.name}`,
-  description: `A photo collection by ${person.name}`,
-  // Images by https://lorant.one
-  // These are placeholder images, replace with your own
-  images: [
-    {
-      src: publicAsset("/images/gallery/horizontal-1.jpg"),
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: publicAsset("/images/gallery/vertical-4.jpg"),
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: publicAsset("/images/gallery/horizontal-3.jpg"),
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: publicAsset("/images/gallery/vertical-1.jpg"),
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: publicAsset("/images/gallery/vertical-2.jpg"),
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: publicAsset("/images/gallery/horizontal-2.jpg"),
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: publicAsset("/images/gallery/horizontal-4.jpg"),
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: publicAsset("/images/gallery/vertical-3.jpg"),
-      alt: "image",
-      orientation: "vertical",
-    },
-  ],
-};
-
-export { person, social, newsletter, home, about, work, gallery };
+export { person, social, newsletter, home, about, work };

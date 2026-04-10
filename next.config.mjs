@@ -11,6 +11,7 @@ const basePath = process.env.NEXT_PUBLIC_BASE_PATH?.replace(/\/$/, "") ?? "";
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: "export",
+  cleanDistDir: false,
   trailingSlash: true,
   basePath: basePath || undefined,
   pageExtensions: ["ts", "tsx", "md", "mdx"],

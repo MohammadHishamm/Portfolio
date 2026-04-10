@@ -1,0 +1,41 @@
+---
+title: "Apple Pay & Google Play Integration – Hotdesk"
+publishedAt: "2026-01-01"
+summary: "Integrated Apple Pay and Google Play billing into Hotdesk's booking and subscription flow — both processed through Stripe.js with Firebase Remote Config feature flags for safe, controlled rollout."
+images:
+  - "/images/projects/project-01/googlePay1.png"
+  - "/images/projects/project-01/GooglePay2.png"
+team:
+  - name: "Mohammad Hisham"
+    role: "Front-end Engineer"
+    avatar: "/images/avatar.jpeg"
+    linkedIn: "https://www.linkedin.com/in/mohammad-hisham-24963b2ab/"
+---
+
+## Overview
+
+End-to-end integration of both Apple Pay and Google Play billing into Hotdesk's payment system for booking and subscription flows. Both providers are processed through Stripe.js and controlled via Firebase Remote Config, allowing the team to enable or disable each independently without a deployment.
+
+## Key Features
+
+- **Dual Payment Method Support**: Added both Apple Pay and Google Play as selectable payment options in the checkout UI, each toggled via its own Remote Config key.
+- **Browser & Wallet Validation**: Implemented upfront checks to confirm browser/device support (Safari for Apple Pay, Chrome/Android for Google Pay) and that the respective wallet is configured — preventing runtime errors before the payment sheet opens.
+- **Stripe + Native SDKs**: Wrapped both the Apple Pay SDK and Google Pay API within Stripe.js, following official recommended integration paths for PCI compliance and a seamless native payment sheet experience.
+- **Remote Config Gates**: Each payment method has an independent Firebase Remote Config flag, allowing instant rollback or A/B testing without code changes.
+
+## Technologies Used
+
+- **TypeScript** – core implementation language
+- **Apple Pay SDK** – native iOS/macOS payment sheet
+- **Google Pay API** – native Android/Chrome payment sheet
+- **Stripe.js** – unified payment processor wrapping both SDKs
+- **Firebase Remote Config** – feature flags for controlled rollout
+- **Next.js** – application framework
+
+## Challenges and Learnings
+
+The key challenge was abstracting two different native payment SDKs behind a single, consistent checkout interface. Stripe.js provided the right level of abstraction — both flows share the same payment intent lifecycle, differing only in the wallet-specific sheet that opens. Device/browser capability checks were essential; without them, users on unsupported environments would encounter silent failures.
+
+## Outcome
+
+Apple Pay and Google Play billing are live in production on Hotdesk's subscription and booking flows, providing native one-tap checkout for both iOS/macOS and Android/Chrome users.

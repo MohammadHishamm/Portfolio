@@ -137,7 +137,18 @@ const server = http.createServer((req, res) => {
     return;
   }
   const type = lookup(filePath) || "application/octet-stream";
-  res.writeHead(200, { "Content-Type": type });
+  // HTML and RSC txt files must never be cached so stale chunk hashes can't
+  // cause ChunkLoadErrors after a rebuild.
+  const isHtml = filePath.endsWith(".html");
+  const isTxt = filePath.endsWith(".txt");
+  const cacheHeader =
+    isHtml || isTxt
+      ? "no-store, no-cache, must-revalidate"
+      : "public, max-age=31536000, immutable";
+  res.writeHead(200, {
+    "Content-Type": type,
+    "Cache-Control": cacheHeader,
+  });
   fs.createReadStream(filePath).pipe(res);
 });
 

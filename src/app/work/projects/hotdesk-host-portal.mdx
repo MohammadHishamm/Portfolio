@@ -1,0 +1,48 @@
+---
+title: "Invoice & Promo-code Features – Hotdesk Host Portal"
+publishedAt: "2025-09-01"
+summary: "Designed and implemented Invoice management and Promo-code features end-to-end in the Hotdesk Host Portal (Angular), integrated via the internal Hotdesk SDK and controlled with Unleash feature flags."
+images:
+  - "/images/projects/project-01/invoice1.jpg"
+  - "/images/projects/project-01/invoice2.mp4"
+  - "/images/projects/project-01/promo1.jpg"
+  - "/images/projects/project-01/promo2.jpg"
+team:
+  - name: "Mohammad Hisham"
+    role: "Front-end Engineer"
+    avatar: "/images/avatar.jpeg"
+    linkedIn: "https://www.linkedin.com/in/mohammad-hisham-24963b2ab/"
+---
+
+## Overview
+
+Built two major features in the Hotdesk Host Portal — a B2B Angular application used by workspace hosts to manage their properties, bookings, and finances. Both features were designed directly from Figma screens, integrated with the backend via the internal Hotdesk SDK, and safely gated behind Unleash feature flags.
+
+## Invoice Feature
+
+- **UI Implementation**: Developed all Invoice screens pixel-perfect from Figma designs, including invoice listing, detail view, and status management.
+- **Backend Integration**: Used the Hotdesk SDK to call backend APIs; referenced Swagger documentation to align request/response formats correctly.
+- **Feature Flag**: Wired the Invoice entry point with Unleash so the feature can be hidden instantly without a release.
+
+## Promo-code Feature
+
+- **Full CRUD**: Implemented all Promo-code management screens — create, read, update, and delete — covering every state and edge case.
+- **Backend Integration**: Same SDK + Swagger approach for reliable, type-safe API calls.
+- **Feature Flag**: Independent Unleash toggle, allowing the Promo-code section to be enabled or disabled separately from Invoice.
+
+## Technologies Used
+
+- **Angular** – component framework for the Host Portal
+- **TypeScript** – type-safe implementation throughout
+- **Hotdesk SDK** – internal library for backend API calls
+- **Swagger** – API reference for request/response contracts
+- **Unleash** – feature flag system for controlled rollout
+- **SCSS** – scoped styling aligned with the design system
+
+## Challenges and Learnings
+
+Working within an established Angular codebase required quickly understanding existing patterns and conventions before writing new code. Using the internal SDK instead of raw HTTP calls also meant learning its abstraction layer — but paid off in consistency and reduced boilerplate across both features.
+
+## Outcome
+
+Both features shipped to production. Hosts can now generate and manage invoices directly from the portal, and the Promo-code system supports full lifecycle management with instant toggling via feature flags.

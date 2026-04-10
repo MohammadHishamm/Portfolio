@@ -1,0 +1,44 @@
+---
+title: "Project Architecture Overhaul – Hotdesk"
+publishedAt: "2026-02-01"
+summary: "Researched, documented, and implemented a new SCR project structure for the Hotdesk front-end, replacing legacy MUI/Bootstrap with a Shadcn + Tailwind CSS design system."
+images:
+  - "/images/projects/project-01/structure0.jpg"
+  - "/images/projects/project-01/structure.jpg"
+  - "/images/projects/project-01/structure2.jpg"
+team:
+  - name: "Mohammad Hisham"
+    role: "Front-end Engineer"
+    avatar: "/images/avatar.jpeg"
+    linkedIn: "https://www.linkedin.com/in/mohammad-hisham-24963b2ab/"
+---
+
+## Overview
+
+Led the research, documentation, and implementation of a new project structure for the Hotdesk front-end codebase. The goal was to reduce complexity, improve reusability, and establish a clean boundary between component types — setting the team up for faster, more consistent feature development.
+
+## Key Features
+
+- **SCR Structure**: Adopted the SCR (Screens / Components / Resources) architecture, with a deliberate split inside the components folder:
+  - `raw/` — unstyled primitives sourced directly from Shadcn
+  - `shared/` — composed components built from raw material, reusable across screens
+  - `layout/` — global structure components (NavBar, Footer, etc.)
+- **Shadcn + Tailwind CSS**: Replaced MUI, Bootstrap, and SCSS with Shadcn and Tailwind for a fully customisable, token-driven design system with no dependency bloat.
+- **Library Upgrades**: Audited and upgraded all dependencies to their latest stable versions as part of the migration.
+- **Documentation**: Produced a full architecture document explaining the rationale, folder conventions, and contribution guidelines.
+
+## Technologies Used
+
+- **Next.js** – application framework
+- **TypeScript** – type safety throughout
+- **Shadcn** – accessible component primitives
+- **Tailwind CSS** – utility-first styling
+- **pnpm** – package manager for the new setup
+
+## Challenges and Learnings
+
+The hardest part was making the case for change. Presenting a thorough written proposal — covering the problem, the chosen solution, alternatives considered, and migration impact — to the CTO, product manager, and senior engineers built the trust needed to get approval. Writing documentation first also surfaced edge cases before a single line of production code was changed.
+
+## Outcome
+
+The new architecture was approved by the CTO and shipped. Engineers now onboard to a consistent, predictable structure, and the Shadcn + Tailwind stack has reduced styling-related PR review comments significantly.

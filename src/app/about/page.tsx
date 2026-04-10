@@ -13,7 +13,7 @@ import {
   Row,
 } from "@once-ui-system/core";
 import { baseURL, about, home, person, social } from "@/resources";
-import { schemaAssetUrl } from "@/utils/publicAsset";
+import { schemaAssetUrl, publicAsset } from "@/utils/publicAsset";
 import TableOfContents from "@/components/about/TableOfContents";
 import styles from "@/components/about/about.module.scss";
 import React from "react";
@@ -194,6 +194,26 @@ export default function About() {
                 )}
               </Row>
             )}
+            <Row
+              className={styles.blockAlign}
+              paddingBottom="8"
+              fitWidth
+              data-border="rounded"
+            >
+              <a
+                href={publicAsset("/Mohammad-Hisham-Resume.pdf")}
+                download="Mohammad Hisham Elsayed - Software Engineer.pdf"
+                style={{ textDecoration: "none" }}
+              >
+                <Button
+                  prefixIcon="document"
+                  label="Download CV"
+                  size="s"
+                  weight="default"
+                  variant="primary"
+                />
+              </a>
+            </Row>
           </Column>
 
           {about.intro.display && (
