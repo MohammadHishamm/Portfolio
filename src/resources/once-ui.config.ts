@@ -13,7 +13,7 @@ import {
 import { home } from "./index";
 
 // Site URL (SEO, schema). Must match where the site is hosted (include /repo for project Pages).
-const baseURL: string = "https://mohammadhishamm.github.io/Portfolio";
+const baseURL: string = "https://mohammad-hisham-portfolio.vercel.app";
 
 const routes: RoutesConfig = {
   "/": true,
