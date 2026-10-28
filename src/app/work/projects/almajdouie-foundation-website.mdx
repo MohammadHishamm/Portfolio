@@ -1,0 +1,41 @@
+---
+title: "Almajdouie Foundation – Website & CMS"
+publishedAt: "2026-10-04"
+summary: "Freelance project developed end to end on my own: a bilingual, Arabic-first website and admin CMS for a Saudi charitable foundation, with full SEO work and deployment on Vercel and Cloudflare Workers."
+images: []
+team:
+  - name: "Mohammad Hisham"
+    role: "Full-stack Developer"
+    avatar: "/images/avatar.jpeg"
+    linkedIn: "https://www.linkedin.com/in/mohammad-hisham-24963b2ab/"
+---
+
+## Overview
+
+The Almajdouie Foundation is a Saudi grant-making foundation focused on economic empowerment programmes and the stewardship of Almajdouie mosques. I developed the whole project **end to end on my own** as a full-stack developer — from the Figma design to the database, admin dashboard, deployment, and launch.
+
+## Key Features
+
+- **Bilingual Public Website**: Arabic-first with RTL layout and an English toggle — 25+ pages including programmes, news, gallery, reports, careers, contact, and an interactive mosque map.
+- **Admin CMS**: A role-based dashboard managing 20+ content types with three staff roles, secured by **Supabase Row Level Security** in PostgreSQL.
+- **Private File Storage**: Job applications and complaints are stored privately and read only through short-lived signed URLs.
+- **SEO**: Metadata and canonical tags, sitemap.xml, robots.txt, JSON-LD structured data, link previews with a working logo, and 301/410 redirects from the old site's URLs to keep the search ranking after the migration.
+- **Theming**: Light and dark themes with a semantic design-token system.
+- **Deployment**: Deployed on **Vercel** and **Cloudflare Workers** (OpenNext) with GitHub Actions, plus Vercel Web Analytics.
+
+## Technologies Used
+
+- **Next.js & React** – App Router, Server Components, and Server Actions
+- **TypeScript** – type safety across the project
+- **Tailwind CSS & Shadcn** – UI
+- **Supabase** – PostgreSQL, auth, storage, and Row Level Security
+- **MapLibre** – interactive mosque map
+- **Vercel & Cloudflare Workers** – hosting
+
+## Challenges and Learnings
+
+Moving an existing site to a new platform without losing search traffic meant mapping every old URL to its new home, answering 410 for pages that no longer exist, and redirecting deleted or unpublished content to its section. Building Arabic-first with logical CSS properties made the English toggle work without a second layout.
+
+## Outcome
+
+The foundation has a modern bilingual website its staff can manage themselves, with full handover documentation for future developers.

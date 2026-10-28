@@ -91,8 +91,8 @@ const about: About = {
     description: (
       <>
         Full-stack Software Engineer with hands-on experience building production
-        features across front-end interfaces, payment integrations, and analytics
-        pipelines. I care deeply about clean architecture, developer experience, and
+        features across front-end interfaces, backend APIs, payment integrations,
+        search, and cloud infrastructure on AWS. I care deeply about clean architecture, developer experience, and
         shipping things that actually work. Currently based in Cairo, Egypt — open
         to hybrid and remote roles.
       </>
@@ -105,8 +105,28 @@ const about: About = {
       {
         company: "Hotdesk",
         timeframe: "2025 – Present",
-        role: "Front-end Engineer (Hybrid)",
+        role: "Software Engineer — Front-end & Back-end (Hybrid)",
         achievements: [
+          <>
+            Built the backend of <strong>QR door access control</strong> integrated with the Dahua
+            DSS system — host and guest APIs, the QR in the app and the booking confirmation email,
+            automatic grant/revoke on a dedicated Celery queue, and a scheduled reconcile job on AWS.
+          </>,
+          <>
+            Built a <strong>Typesense search index</strong> for listings and workspaces with
+            booking-derived seat availability per day, kept in sync automatically as bookings and
+            listings change.
+          </>,
+          <>
+            Integrated <strong>third-party provider APIs and SDKs</strong> (IWG/Regus, Dahua DSS) —
+            studied their docs, tested every endpoint in Postman, and organised them in a shared
+            Postman workspace for the team.
+          </>,
+          <>
+            Worked on <strong>AWS</strong>: Celery task queues on SQS, scheduled jobs on EventBridge,
+            one-off ECS Fargate tasks from CloudShell for migrations and backfills, and investigating
+            ECS cluster memory issues with CloudWatch. Developed and tested everything in Docker.
+          </>,
           <>
             Built a <strong>Product Analytics Funnels</strong> system using PostHog and Firebase
             to track page visits, navigation sources, and user actions across the web app —
@@ -153,6 +173,31 @@ const about: About = {
             height: 9,
           },
         ],
+      },
+      {
+        company: "Almajdouie Foundation",
+        timeframe: "2026",
+        role: "Full-stack Developer (Freelance, Remote)",
+        achievements: [
+          <>
+            Developed the whole project <strong>end to end on my own</strong> — from the Figma design
+            to the database, admin dashboard, deployment, and launch — for a Saudi charitable foundation.
+          </>,
+          <>
+            Built a bilingual, <strong>Arabic-first RTL</strong> website with 25+ pages, light/dark
+            themes, and an interactive mosque map, plus an admin CMS for 20+ content types with three
+            staff roles secured by Supabase Row Level Security.
+          </>,
+          <>
+            Handled <strong>SEO</strong>: metadata and canonical tags, sitemap.xml, robots.txt,
+            JSON-LD structured data, link previews, and 301/410 redirects from the old site's URLs.
+          </>,
+          <>
+            Deployed on <strong>Vercel</strong> and <strong>Cloudflare Workers</strong> with GitHub
+            Actions, using Next.js, TypeScript, Tailwind CSS, and Supabase.
+          </>,
+        ],
+        images: [],
       },
       {
         company: "Ariatoon",
@@ -216,17 +261,37 @@ const about: About = {
         title: "Backend & Databases",
         description: (
           <>
-            Server-side development with Node.js, Go, .NET/C#, Java, and Spring Boot.
-            Comfortable with SQL and NoSQL databases, Firebase, Supabase, and Posthog
-            for event tracking.
+            Server-side development with Python, Django REST Framework, and Celery, plus
+            Node.js, Go, .NET/C#, Java, and Spring Boot. Comfortable with PostgreSQL/PostGIS,
+            Redis, Typesense, NoSQL databases, Firebase, Supabase, and Posthog for event tracking.
           </>
         ),
         tags: [
+          { name: "Python", icon: "python" },
+          { name: "Django", icon: "django" },
+          { name: "Celery", icon: "celery" },
+          { name: "PostgreSQL", icon: "postgresql" },
           { name: "Go", icon: "go" },
           { name: "Firebase", icon: "firebase" },
           { name: "Supabase", icon: "supabase" },
           { name: "Docker", icon: "docker" },
           { name: "Stripe", icon: "stripe" },
+        ],
+        images: [],
+      },
+      {
+        title: "Cloud & DevOps",
+        description: (
+          <>
+            AWS (ECS, Fargate, SQS, EventBridge, CloudWatch, CloudShell, RDS), Docker and
+            Docker Compose, GitLab CI/CD and GitHub Actions, Vercel, and Cloudflare Workers.
+            API testing and documentation with Postman workspaces and Swagger (OpenAPI).
+          </>
+        ),
+        tags: [
+          { name: "AWS", icon: "aws" },
+          { name: "Docker", icon: "docker" },
+          { name: "Postman", icon: "postman" },
         ],
         images: [],
       },

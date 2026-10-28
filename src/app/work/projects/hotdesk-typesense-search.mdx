@@ -1,0 +1,39 @@
+---
+title: "Listing Search with Typesense – Hotdesk"
+publishedAt: "2026-09-13"
+summary: "Built a Typesense search index for Hotdesk listings and workspaces, including booking-derived seat availability per day, kept in sync automatically as bookings and listings change."
+images: []
+team:
+  - name: "Mohammad Hisham"
+    role: "Back-end Engineer"
+    avatar: "/images/avatar.jpeg"
+    linkedIn: "https://www.linkedin.com/in/mohammad-hisham-24963b2ab/"
+---
+
+## Overview
+
+Searching listings through the main database meant heavy queries as the catalogue grew. I built a **Typesense** search index for listings and workspaces to give users fast, typo-tolerant search.
+
+## Key Features
+
+- **Listings & Workspaces Index**: Every listing and workspace is indexed with the fields users search and filter by.
+- **Seat Availability per Day**: Availability is derived from the bookings and stored in the index, so search can show how many seats are free each day at a venue.
+- **Automatic Sync**: The index updates itself whenever a booking or listing changes, including bulk updates.
+- **Safe Rebuild**: A full rebuild command that is safe to run more than once.
+- **Clean Links**: Slugs on the indexed documents for clean detail-page URLs.
+
+## Technologies Used
+
+- **Typesense** – search engine
+- **Python & Django** – indexing logic and sync hooks
+- **Celery** – background re-indexing
+- **PostgreSQL** – source of truth
+- **Docker** – running Typesense locally
+
+## Challenges and Learnings
+
+Counting free seats correctly is harder than it looks: seats are taken by overlapping bookings, not by the sum of every booking in a day, and bookings marked as No Show still hold their seats. Working through these edge cases in code review made the index match what the booking flow actually allows.
+
+## Outcome
+
+Users get fast, typo-tolerant search with seat availability, without heavy queries on the main database.

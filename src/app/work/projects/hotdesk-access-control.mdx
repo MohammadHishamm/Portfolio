@@ -1,0 +1,40 @@
+---
+title: "QR Door Access Control – Hotdesk"
+publishedAt: "2026-10-27"
+summary: "Built the backend that lets a booked guest open the venue's doors with a QR code, integrated with the Dahua DSS access control system, with access kept in sync with bookings on a dedicated Celery queue."
+images: []
+team:
+  - name: "Mohammad Hisham"
+    role: "Back-end Engineer"
+    avatar: "/images/avatar.jpeg"
+    linkedIn: "https://www.linkedin.com/in/mohammad-hisham-24963b2ab/"
+---
+
+## Overview
+
+I built the backend for QR door access on Hotdesk: when a booking is confirmed, the guest gets a QR code that opens the venue's doors for the time they booked. The doors are managed by the **Dahua DSS** access control system, which I integrated with directly.
+
+## Key Features
+
+- **Host and Guest APIs**: REST endpoints for hosts to manage door access on their listings, and for guests to fetch the QR code for their booking.
+- **QR Delivery**: The QR code is shown in the app and also embedded in the booking confirmation email.
+- **Automatic Grant & Revoke**: Access is granted, updated, or revoked whenever a booking is confirmed, changed, or cancelled — running on a **dedicated Celery queue and worker**, so a slow device API never blocks a booking.
+- **Scheduled Reconcile**: A management command runs every 15 minutes on an AWS schedule to repair any access that no longer matches its booking.
+- **Safe Rollout**: The whole feature sits behind an **Unleash** flag, rolled out to staging first and then production.
+
+## Technologies Used
+
+- **Python & Django REST Framework** – APIs and business logic
+- **Celery & AWS SQS** – background tasks on a dedicated queue
+- **Dahua DSS API** – the access control system
+- **Postman** – exploring and testing the Dahua API before writing code
+- **Unleash** – feature flag for the rollout
+- **PostgreSQL** – data storage
+
+## Challenges and Learnings
+
+The hardest part was keeping door access correct when bookings overlap or change several times in a row: a careless revoke could lock out a guest who still holds a valid booking. Several code review rounds with senior engineers taught me to treat every revoke path as a potential lock-out, and to keep a reconcile job as a safety net for anything the event-driven path misses.
+
+## Outcome
+
+QR door access is live on staging, with the production rollout planned step by step: queue, keys, deploy, schedule, and the feature flag last.

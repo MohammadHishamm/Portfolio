@@ -1,0 +1,38 @@
+---
+title: "Cloud Operations on AWS & Docker – Hotdesk"
+publishedAt: "2026-10-15"
+summary: "Hands-on work on Hotdesk's AWS infrastructure — Celery queues on SQS, scheduled jobs on EventBridge, one-off ECS Fargate tasks from CloudShell, and investigating cluster memory issues with CloudWatch — with all development done in Docker."
+images: []
+team:
+  - name: "Mohammad Hisham"
+    role: "Back-end Engineer"
+    avatar: "/images/avatar.jpeg"
+    linkedIn: "https://www.linkedin.com/in/mohammad-hisham-24963b2ab/"
+---
+
+## Overview
+
+Hotdesk's backend runs on **AWS**. Beyond writing features, I worked on the infrastructure that runs them: background task queues, scheduled jobs, production data tasks, and investigating issues in running clusters.
+
+## Key Features
+
+- **Celery on SQS**: Created and configured Celery task queues on **AWS SQS**, including a dedicated queue for the access control feature.
+- **Scheduled Jobs**: Scheduled recurring tasks with **AWS EventBridge**.
+- **One-off Production Tasks**: Ran database migrations, data backfills, and rating recomputes on **ECS Fargate** from **AWS CloudShell**, on staging first and then production, following runbooks I wrote.
+- **Investigations**: Investigated ECS cluster memory issues and a staging outage using **CloudWatch** logs and metrics, and verified providers' integration behaviour from production logs.
+- **Docker**: Developed and tested inside Docker containers with Docker Compose (API, PostgreSQL/PostGIS, Redis, and Unleash), and upgraded our base image to Debian 12 with GitLab CI building and pushing it.
+
+## Technologies Used
+
+- **AWS** – ECS, Fargate, SQS, EventBridge, CloudWatch, CloudShell, RDS
+- **Docker & Docker Compose** – development environment and images
+- **GitLab CI** – building and pushing images
+- **Celery & Redis** – background tasks
+
+## Challenges and Learnings
+
+Working on production taught me to make every rollout step verified and repeatable: write the runbook, try it on staging, check the numbers, then repeat on production.
+
+## Outcome
+
+Data rollouts for ratings, unified prices, and region search reached staging and production safely, and new background features run on their own queues and schedules.

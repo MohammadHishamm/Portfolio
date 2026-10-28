@@ -1,0 +1,37 @@
+---
+title: "Third-party Provider Integrations – Hotdesk"
+publishedAt: "2026-09-15"
+summary: "Integrated external providers' APIs and SDKs into Hotdesk, including IWG (Regus) workspace bookings and the Dahua DSS access control system — studying their docs and testing every endpoint in a shared Postman workspace first."
+images: []
+team:
+  - name: "Mohammad Hisham"
+    role: "Back-end Engineer"
+    avatar: "/images/avatar.jpeg"
+    linkedIn: "https://www.linkedin.com/in/mohammad-hisham-24963b2ab/"
+---
+
+## Overview
+
+Hotdesk works with external providers whose systems our backend needs to talk to — **IWG (Regus)** for workspace bookings and **Dahua DSS** for door access control. I was responsible for understanding their APIs and SDKs and integrating them into our backend.
+
+## Key Features
+
+- **Docs First**: Read and understood each provider's API documentation and SDK before writing any integration code.
+- **Postman Workspace**: Tried every endpoint in **Postman** and organised the requests into collections and environments in a shared Postman workspace, so the team can reuse and test them.
+- **IWG Integration**: Extended the IWG flow — add-ons selection at the quote step, availability that respects IWG's allocations, and safe booking releases and payment top-ups.
+- **Dahua Integration**: Connected the Dahua DSS access control system to our booking flow for QR door access.
+
+## Technologies Used
+
+- **Python & Django REST Framework** – integration code
+- **Postman** – collections, environments, and a shared workspace
+- **Swagger (OpenAPI)** – documenting our own API
+- **REST APIs** – provider communication
+
+## Challenges and Learnings
+
+A provider's API doesn't always behave exactly like its docs. Testing each call in Postman first, and checking real responses in production logs, avoided building on wrong assumptions.
+
+## Outcome
+
+Hotdesk books IWG workspaces and controls Dahua doors from its own platform, and the team has a shared Postman workspace to test both integrations.
