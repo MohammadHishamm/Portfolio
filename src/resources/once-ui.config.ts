@@ -3,7 +3,6 @@ import {
   DisplayConfig,
   EffectsConfig,
   FontsConfig,
-  MailchimpConfig,
   ProtectedRoutesConfig,
   RoutesConfig,
   SameAsConfig,
@@ -138,50 +137,6 @@ const effects: EffectsConfig = {
   },
 };
 
-const mailchimp: MailchimpConfig = {
-  action: "https://url/subscribe/post?parameters",
-  effects: {
-    mask: {
-      cursor: true,
-      x: 50,
-      y: 0,
-      radius: 100,
-    },
-    gradient: {
-      display: true,
-      opacity: 90,
-      x: 50,
-      y: 0,
-      width: 50,
-      height: 50,
-      tilt: 0,
-      colorStart: "accent-background-strong",
-      colorEnd: "static-transparent",
-    },
-    dots: {
-      display: true,
-      opacity: 20,
-      size: "2",
-      color: "brand-on-background-weak",
-    },
-    grid: {
-      display: false,
-      opacity: 100,
-      color: "neutral-alpha-medium",
-      width: "0.25rem",
-      height: "0.25rem",
-    },
-    lines: {
-      display: false,
-      opacity: 100,
-      color: "neutral-alpha-medium",
-      size: "16",
-      thickness: 1,
-      angle: 90,
-    },
-  },
-};
-
 // default schema data
 const schema: SchemaConfig = {
   logo: "",
@@ -216,7 +171,6 @@ const socialSharing: SocialSharingConfig = {
 
 export {
   display,
-  mailchimp,
   routes,
   protectedRoutes,
   baseURL,

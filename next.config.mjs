@@ -16,6 +16,32 @@ const nextConfig = {
   basePath: basePath || undefined,
   pageExtensions: ["ts", "tsx", "md", "mdx"],
   transpilePackages: ["next-mdx-remote"],
+  experimental: {
+    optimizePackageImports: ["@once-ui-system/core"],
+  },
+  webpack: (config, { webpack }) => {
+    // Once UI's ClientFlex/ClientGrid import useLayout from the package root,
+    // which drags its charts, code highlighter and emoji data (~1 MB) into
+    // every page. Point that import at the provider that defines it.
+    config.plugins.push(
+      new webpack.NormalModuleReplacementPlugin(/^\.\.$/, (resource) => {
+        if (/@once-ui-system[\\/]core[\\/]dist[\\/]components[\\/]Client(Flex|Grid)\.js$/.test(resource.contextInfo?.issuer ?? "")) {
+          resource.request = "../contexts/LayoutProvider.js";
+        }
+      }),
+    );
+    // Next still bundles every "use client" module Once UI's barrels reach,
+    // its chart components among them. The site draws no charts, and
+    // recharts is only touched inside those components, so stub it out.
+    config.resolve.alias = { ...config.resolve.alias, recharts: false };
+    // The package has no "sideEffects" field, so webpack keeps every module its
+    // barrels re-export. Its JS has none (styles come from CSS modules).
+    config.module.rules.push({
+      test: /@once-ui-system[\\/]core[\\/]dist[\\/].*\.js$/,
+      sideEffects: false,
+    });
+    return config;
+  },
   images: {
     unoptimized: true,
     remotePatterns: [

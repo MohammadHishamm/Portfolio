@@ -12,7 +12,6 @@ import {
 } from "@once-ui-system/core";
 import { home, about, person, baseURL } from "@/resources";
 import { schemaAssetUrl } from "@/utils/publicAsset";
-import { Mailchimp } from "@/components";
 import { Projects } from "@/components/work/Projects";
 
 export async function generateMetadata() {
@@ -103,7 +102,6 @@ export default function Home() {
         <Projects range={[1, 1]} />
       </RevealFx>
       <Projects range={[2]} />
-      <Mailchimp />
     </Column>
   );
 }

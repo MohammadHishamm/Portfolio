@@ -2,7 +2,6 @@
 export {
   person,
   social,
-  newsletter,
   home,
   about,
   work,
@@ -10,7 +9,6 @@ export {
 
 export {
   display,
-  mailchimp,
   routes,
   protectedRoutes,
   baseURL,

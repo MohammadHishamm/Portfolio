@@ -1,4 +1,4 @@
-import { About, Home, Newsletter, Person, Social, Work } from "@/types";
+import { About, Home, Person, Social, Work } from "@/types";
 import { publicAsset } from "@/utils/publicAsset";
 
 const person: Person = {
@@ -10,12 +10,6 @@ const person: Person = {
   avatar: publicAsset("/images/avatar.jpeg"),
   email: "mohammadhesham65@gmail.com",
   languages: ["English", "Arabic"], // optional: Leave the array empty if you don't want to display languages
-};
-
-const newsletter: Newsletter = {
-  display: true,
-  title: <>Subscribe to {person.firstName}'s Newsletter</>,
-  description: <>My weekly newsletter about creativity and engineering</>,
 };
 
 const social: Social = [
@@ -326,4 +320,4 @@ const work: Work = {
   // Add project pages as .mdx files in src/app/work/projects
 };
 
-export { person, social, newsletter, home, about, work };
+export { person, social, home, about, work };
