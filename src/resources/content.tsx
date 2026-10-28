@@ -197,7 +197,26 @@ const about: About = {
             Actions, using Next.js, TypeScript, Tailwind CSS, and Supabase.
           </>,
         ],
-        images: [],
+        images: [
+          {
+            src: publicAsset("/images/projects/project-02/almajdouie-home.png"),
+            alt: "Almajdouie Foundation website",
+            width: 16,
+            height: 9,
+          },
+          {
+            src: publicAsset("/images/projects/project-02/almajdouie-cms.png"),
+            alt: "Almajdouie CMS dashboard",
+            width: 16,
+            height: 9,
+          },
+          {
+            src: publicAsset("/images/projects/project-02/almajdouie-google.png"),
+            alt: "Almajdouie Foundation on Google search",
+            width: 16,
+            height: 9,
+          },
+        ],
       },
       {
         company: "Ariatoon",
