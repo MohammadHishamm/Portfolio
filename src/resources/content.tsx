@@ -199,19 +199,19 @@ const about: About = {
         ],
         images: [
           {
-            src: publicAsset("/images/projects/project-02/almajdouie-home.png"),
+            src: publicAsset("/images/projects/project-02/almajdouie-home.jpg"),
             alt: "Almajdouie Foundation website",
             width: 16,
             height: 9,
           },
           {
-            src: publicAsset("/images/projects/project-02/almajdouie-cms.png"),
+            src: publicAsset("/images/projects/project-02/almajdouie-cms.jpg"),
             alt: "Almajdouie CMS dashboard",
             width: 16,
             height: 9,
           },
           {
-            src: publicAsset("/images/projects/project-02/almajdouie-google.png"),
+            src: publicAsset("/images/projects/project-02/almajdouie-google.jpg"),
             alt: "Almajdouie Foundation on Google search",
             width: 16,
             height: 9,
