@@ -24,58 +24,57 @@ function routeKeyFromPathname(pathname: string | null): string | null {
   return p;
 }
 
+function isRouteEnabled(key: string | null): boolean {
+  if (!key) return false;
+
+  if (key in routes) {
+    return routes[key as keyof typeof routes];
+  }
+
+  const dynamicRoutes = ["/work"] as const;
+  for (const route of dynamicRoutes) {
+    if (key.startsWith(route) && routes[route]) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
 const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
   const pathname = usePathname();
-  const [isRouteEnabled, setIsRouteEnabled] = useState(false);
-  const [isPasswordRequired, setIsPasswordRequired] = useState(false);
+  // Decided during render, not in an effect, so the static HTML already holds
+  // the page. Waiting for an effect meant visitors saw a spinner until every
+  // script had downloaded and run.
+  const key = routeKeyFromPathname(pathname);
+  const routeEnabled = isRouteEnabled(key);
+  const isPasswordRequired = Boolean(key && protectedRoutes[key as keyof typeof protectedRoutes]);
+
   const [password, setPassword] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [error, setError] = useState<string | undefined>(undefined);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(isPasswordRequired);
 
   useEffect(() => {
-    const performChecks = async () => {
+    if (!isPasswordRequired) {
+      setLoading(false);
+      return;
+    }
+
+    const checkAuth = async () => {
       setLoading(true);
-      setIsRouteEnabled(false);
-      setIsPasswordRequired(false);
       setIsAuthenticated(false);
 
-      const key = routeKeyFromPathname(pathname);
-
-      const checkRouteEnabled = () => {
-        if (!key) return false;
-
-        if (key in routes) {
-          return routes[key as keyof typeof routes];
-        }
-
-        const dynamicRoutes = ["/work"] as const;
-        for (const route of dynamicRoutes) {
-          if (key.startsWith(route) && routes[route]) {
-            return true;
-          }
-        }
-
-        return false;
-      };
-
-      const routeEnabled = checkRouteEnabled();
-      setIsRouteEnabled(routeEnabled);
-
-      if (key && protectedRoutes[key as keyof typeof protectedRoutes]) {
-        setIsPasswordRequired(true);
-
-        const response = await fetch("/api/check-auth");
-        if (response.ok) {
-          setIsAuthenticated(true);
-        }
+      const response = await fetch("/api/check-auth");
+      if (response.ok) {
+        setIsAuthenticated(true);
       }
 
       setLoading(false);
     };
 
-    performChecks();
-  }, [pathname]);
+    checkAuth();
+  }, [isPasswordRequired, pathname]);
 
   const handlePasswordSubmit = async () => {
     const response = await fetch("/api/authenticate", {
@@ -92,16 +91,16 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
     }
   };
 
+  if (!routeEnabled) {
+    return <NotFound />;
+  }
+
   if (loading) {
     return (
       <Flex fillWidth paddingY="128" horizontal="center">
         <Spinner />
       </Flex>
     );
-  }
-
-  if (!isRouteEnabled) {
-    return <NotFound />;
   }
 
   if (isPasswordRequired && !isAuthenticated) {
